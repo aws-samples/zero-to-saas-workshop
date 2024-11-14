@@ -1,0 +1,25 @@
+{
+  "name": "saas-control-plane",
+  "version": "0.1.0",
+  "bin": {
+    "saas-control-plane": "bin/saas-control-plane.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.19",
+    "aws-cdk": "^2.130.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
+  },
+  "dependencies": {
+    "@cdklabs/sbt-aws": "0.1.5",
+    "aws-cdk-lib": "^2.130.0",
+    "cdk-nag": "^2.27.13",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
+  }
+}

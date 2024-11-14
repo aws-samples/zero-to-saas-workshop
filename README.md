@@ -1,11 +1,10 @@
-## My Project
+# AWS Zero to SaaS workshop
 
-TODO: Fill this README out!
+This is the source code for the [AWS Zero to SaaS workshop]().
 
-Be sure to:
+This Level 300 advanced workshop guides you through an accelerated experience to build a SaaS application on AWS with an in-depth look at the core elements of a multi-tenant architecture.
 
-* Change the title in this README
-* Edit your repository description on GitHub
+Please note that as of today, this workshop is meant to be used in AWS-run events
 
 ## Security
 
@@ -14,4 +13,3 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
-
