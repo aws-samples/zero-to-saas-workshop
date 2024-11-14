@@ -21,4 +21,4 @@ cdk.out
 .DS_Store
 .idea/
 
-/saas-application/serverless-services/src/extensions/*
+#/saas-application/serverless-services/src/extensions/*
