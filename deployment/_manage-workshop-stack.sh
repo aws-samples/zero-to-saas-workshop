@@ -15,7 +15,7 @@ create_workshop() {
     #replace_instance_profile $BUILD_VSCODE_SERVER_PROFILE_PARAMETER_NAME
     
     run_ssm_command ". ~/.bashrc"
-    run_ssm_command "cd ~ ; git clone --branch $REPO_BRANCH_NAME $REPO_URL || echo 'Repo already exists.'"
+    run_ssm_command "cd ~ ; git clone --branch $REPO_BRANCH_NAME $REPO_URL aws-zero-to-saas-workshop || echo 'Repo already exists.'"
     run_ssm_command "cd ~/$REPO_NAME && git config core.filemode false"
     run_ssm_command "cd ~/$REPO_NAME && chmod +x . -R"
     run_ssm_command "cd ~/$REPO_NAME/deployment && ./create-workshop.sh $REPO_URL | tee .ws-create.log"
