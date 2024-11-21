@@ -14,7 +14,7 @@ TENANT_USERPOOL_ID=$(aws cloudformation describe-stacks --stack-name $TENANT_MGM
 
 TENANT_USERPOOL_CLIENT_ID=$(aws cloudformation describe-stacks --stack-name $TENANT_MGMT_STACK_NAME --query "Stacks[0].Outputs[?OutputKey=='UserPoolClientId'].OutputValue" --output text)
 
-TENANT_ADMIN_ARRAY=$(aws cognito-idp list-users --user-pool-id $TENANT_USERPOOL_ID  | jq -r ".Users[].Username")
+TENANT_ADMIN_ARRAY=$(aws cognito-idp list-users --user-pool-id $TENANT_USERPOOL_ID  | jq -r '.Users[] | select(.Attributes[].Value == "basic") | .Username')
 
 # loop through the users
 for TENANT_ADMIN in $TENANT_ADMIN_ARRAY; do
