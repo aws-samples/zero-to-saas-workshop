@@ -48,8 +48,8 @@ for TENANT_ADMIN in $TENANT_ADMIN_ARRAY; do
     shard_id=$(echo "$order" | jq -r '.shardId')
     order_id=$(echo "$order" | jq -r '.orderId')
     echo -e "Order: ${shard_id}:${order_id}"
-    echo -e "TenantId: ${blue}${shard_id}"
-    echo -e "${NC}OrderId: ${blue}${order_id}"
+    echo -e "Partition Key: ${blue}${shard_id}"
+    echo -e "${NC}Sort Key: ${blue}${order_id}"
     echo -e "${NC}"
   done
   echo -e "${NC}"
