@@ -47,7 +47,7 @@ for TENANT_ADMIN in $TENANT_ADMIN_ARRAY; do
   echo "$orders_response" | jq -c '.[]' | while read -r order; do
     shard_id=$(echo "$order" | jq -r '.shardId')
     order_id=$(echo "$order" | jq -r '.orderId')
-    echo -e "Order: ${shard_id}:${order_id}"
+    echo -e "Order: ${order_id}"
     echo -e "Partition Key: ${blue}${shard_id}"
     echo -e "${NC}Sort Key: ${blue}${order_id}"
     echo -e "${NC}"
