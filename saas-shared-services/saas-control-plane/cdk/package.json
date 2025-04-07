@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@cdklabs/sbt-aws": "0.1.5",
-    "aws-cdk-lib": "^2.130.0",
+    "aws-cdk-lib": "^2.186.0",
     "cdk-nag": "^2.27.13",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21"
