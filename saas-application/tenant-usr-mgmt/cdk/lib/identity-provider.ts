@@ -48,9 +48,29 @@ export class IdentityProvider extends Construct {
 
 
 
+    // writeAttributes governs what the END USER may change about their own profile.
+    //
+    // custom:tenantId and custom:userRole are deliberately NOT listed here. This workshop
+    // teaches ABAC tenant isolation: both attributes are mapped into the federated IAM
+    // session as principal tags and used in the policy conditions that scope a caller to
+    // their own tenant's data. Granting the user write access to them let any authenticated
+    // user call Cognito's own UpdateUserAttributes with nothing but their own access token,
+    // move themselves into another tenant or promote their own role, and have Cognito
+    // re-sign the result -- which defeats the very mechanism the workshop demonstrates.
+    //
+    // Note the previous list named tenantId and userRole but not tenantTier, the one custom
+    // attribute of the three that does NOT govern authorization. That asymmetry is what
+    // identifies this as an unreviewed default rather than a deliberate teaching choice.
+    //
+    // Provisioning is unaffected. writeAttributes does not constrain the IAM-authorized
+    // admin APIs, and tenant users are created through those throughout this repository:
+    // saas-shared-services/saas-control-plane/scripts/provision-tenant.sh and
+    // solutions/lab1/provision-tenant.sh call `aws cognito-idp admin-create-user`, and
+    // saas-application/tenant-usr-mgmt/src/cognito/user_management_util.py calls
+    // admin_create_user. The schema above keeps the attributes mutable so an administrator
+    // can still change them.
     const writeAttributes = new aws_cognito.ClientAttributes()
-      .withStandardAttributes({ email: true })
-      .withCustomAttributes('tenantId', 'userRole');
+      .withStandardAttributes({ email: true });
 
     const tenantUserPoolClient = new aws_cognito.UserPoolClient(this, 'tenantUserPoolClient', {
       userPool: tenantUserPool,
